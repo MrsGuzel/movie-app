@@ -4,16 +4,16 @@ import { auth } from '../auth/firebase'
 import { useNavigate } from 'react-router-dom';
 
 
-export const AuthContext  = createContext()
+export const AuthContext  = createContext();
 
 const AuthContextProvider = ({children}) => {
 let navigate = useNavigate();
 
     const createUser = async (email, password) => {
         try {
-            let userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            let userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            navigate("/");
             console.log(userCredential);
-            navigate("/")
 
         } catch (error) {
             console.log(error.message);

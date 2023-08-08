@@ -1,10 +1,10 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Main from "../pages/Main";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import MovieDetail from "../pages/MovieDetail";
+import { Route, Routes } from "react-router-dom";
 
 const AppRouter = () => {
   return(

@@ -6,13 +6,12 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const {singIn} = useContext(AuthContext)
+  const {signIn} = useContext(AuthContext);
 
-  const handleSubmit = (e) =>{
-    e.preventDefault(
-   singIn(email, password)
-    )
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signIn(email, password)
+  };
   return (
     <div className="overflow-hidden flex-1 h-screen justify-center items-center bg-[#23242a]">
       <div
@@ -23,11 +22,18 @@ const Login = () => {
             Sign In
           </h2>
           <div className="relative z-0 w-full mb-6 group">
-            <input className="peer" name="floating_email" type="email" placeholder=" " required onChange={(e)=>setEmail(e.target.value)}/>
+            <input className="peer" name="floating_email" type="email" placeholder=" " 
+            onChange={(e)=>setEmail(e.target.value)}
+            required 
+            />
             <label htmlFor="floating_email">Email</label>
           </div>
           <div className="relative z-0 w-full mb-6 group">
-            <input className="peer" name="floating_password" type="password" placeholder=" " required onChange={(e)=>setPassword(e.target.value)}/>
+            <input className="peer" name="floating_password" type="password" placeholder=" " 
+           
+            required 
+            onChange={(e)=>setPassword(e.target.value)}
+            />
             <label htmlFor="floating_password">Password</label>
           </div>
           <div className="flex justify-between">
