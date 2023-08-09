@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import React, { createContext, useEffect, useState } from 'react'
 import { auth } from '../auth/firebase'
 import { useNavigate } from 'react-router-dom';
@@ -62,7 +62,20 @@ useEffect(() => {
         });
     };
 
-    const values={createUser, signIn, logOut, currentUser}
+    const signUpProvider = () => {
+        const provider = new GoogleAuthProvider();
+
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log(result);
+            navigate("/")
+        }).catch((error) => {
+            console.log(error);
+            
+        });
+    }
+
+    const values={createUser, signIn, logOut, currentUser, signUpProvider}
 
   return (
     <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
