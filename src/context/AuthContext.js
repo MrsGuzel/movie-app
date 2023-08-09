@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 import React, { createContext } from 'react'
 import { auth } from '../auth/firebase'
 import { useNavigate } from 'react-router-dom';
-import { toastSuccessNotify } from '../helpers/ToastNotify';
+import { toastErrorNotify, toastSuccessNotify } from '../helpers/ToastNotify';
 
 
 export const AuthContext  = createContext();
@@ -14,11 +14,11 @@ let navigate = useNavigate();
         try {
             let userCredential = await createUserWithEmailAndPassword(auth, email, password);
             navigate("/");
-            toastSuccessNotify("Registered successfully")
-            console.log(userCredential);
+            toastSuccessNotify("Registered successfully!")
+            // console.log(userCredential);
 
         } catch (error) {
-            console.log(error.message);
+            toastErrorNotify(error.message);
         }
         
     };
@@ -27,10 +27,11 @@ let navigate = useNavigate();
         try {
            let userCredential = await signInWithEmailAndPassword(auth, email, password);
            navigate("/");
+           toastSuccessNotify("Logged in successfully!")
            console.log(userCredential);
             
         } catch (error) {
-            console.log(error.message);
+            toastErrorNotify(error.message);
         }
     }
 
