@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const {signIn, signUpProvider} = useContext(AuthContext);
+  const {signIn, signUpProvider, forgatPassword} = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,8 +38,9 @@ const Login = () => {
           </div>
           <div className="flex justify-between">
             <span
+            onClick={()=>forgatPassword(email)}
               className="py-3 font-[0.75em] cursor-pointer decoration-none text-gray-500 hover:text-[#ff4b45]"
-            >
+           >
               Forgot Password
             </span>
             <Link
